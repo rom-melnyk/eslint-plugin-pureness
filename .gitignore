@@ -1,0 +1,5 @@
+.idea/
+node_nodules/
+
+# !node_nodules/eslint-plugin-pureness
+
