@@ -12,4 +12,6 @@ Check the pureness of some files.
 1. Include `"pureness"` to the `"plugins": []` array of your `.eslintrc` file.
 1. Add the rule definition to the `"rules": {}` object like this:  
    `"pureness/pure": [2, "formatter", "helper"]`  
-   what means that if `"formatter"` or `"helper"` is the part of full filename, the file **will be analyzed** otherwise it will be ignored.
+   what means that if `"formatter"` or `"helper"` is the part of the full filename, the file **will be analyzed** otherwise it **will be ignored**.
+1. Pay attention:
+  - filename parts (from rule options) are case-insensitive (Unix and Windows users should work fine together);
