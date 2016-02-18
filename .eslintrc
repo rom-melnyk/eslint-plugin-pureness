@@ -15,6 +15,9 @@
         "modules": true
     },
     "rules": {
+        // pureness-related
+        // "pureness/pure": [2, "name1", "name2"]
+
         "semi": [1, "always"], // jsHint: asi: false
         "eqeqeq": [2, "allow-null"],
         "no-eval": 2,
