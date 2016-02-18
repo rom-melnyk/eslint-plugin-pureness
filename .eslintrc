@@ -7,7 +7,6 @@
         "es6": true
     },
     "plugins": [
-        "react",
         "pureness"
     ],
     "ecmaFeatures": {
@@ -16,7 +15,7 @@
     },
     "rules": {
         // pureness-related
-        // "pureness/pure": [2, "name1", "name2"]
+        // "pureness/pure": [2, "part-of-the-file-path-01", "part-of-the-file-path-02"]
 
         "semi": [1, "always"], // jsHint: asi: false
         "eqeqeq": [2, "allow-null"],
@@ -50,12 +49,6 @@
         "space-infix-ops": 2,
         "key-spacing": [2, { "beforeColon": false, "afterColon": true }],
         "quotes": [1, "single"],
-
-        // for React plugin:
-        "react/jsx-boolean-value": 1,
-        "react/jsx-no-undef": 1,
-        "react/jsx-uses-react": 1,
-        "react/jsx-uses-vars": 1,
 
         // JSX
         "jsx-quotes": [1, "prefer-double"],
