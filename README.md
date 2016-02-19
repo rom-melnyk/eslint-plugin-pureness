@@ -37,15 +37,14 @@ Check the pureness of some files.
     },
     "parserOptions": {
         "ecmaVersion": 6,
-        "sourceType": "module"
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        },
     },
     "plugins": [
         "pureness"
     ],
-    "ecmaFeatures": {
-        "jsx": true,
-        "modules": true
-    },
     "rules": {
         // pureness-related
         "pureness/pure": [2, "formatter"],
