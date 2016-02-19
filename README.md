@@ -8,10 +8,26 @@ Check the pureness of some files.
 1. Put test files in `test-me/` folder.
 1. Run `node node_modules/eslint/bin/eslint.js test-me/<your-file.es>` to check how the plugin works.
 
-# Usage
+# Usage in production
+1. Install the plugin via `npm i --save-dev git://git@github.com/rom-melnyk/eslint-plugin-pureness`
 1. Include `"pureness"` to the `"plugins": []` array of your `.eslintrc` file.
 1. Add the rule definition to the `"rules": {}` object like this:  
    `"pureness/pure": [2, "formatter", "helper"]`  
-   what means that if `"formatter"` or `"helper"` is the part of the full filename, the file **will be analyzed** otherwise it **will be ignored**.
-1. Pay attention:
-  - filename parts (from rule options) are case-insensitive (Unix and Windows users should work fine together);
+   what means that if `"formatter"` or `"helper"` is the part of the _full filename,_ the file **will be analyzed** otherwise it **will be ignored**.  
+   **Pay attention,** filename parts are case-insensitive (Unix and Windows users should work fine together).
+1. Create the `.eslint-plugin-pureness-rc` file which describes project-specific unpure calls _(see example below)._
+
+# `.eslint-plugin-pureness-rc` example
+```
+{
+    /**
+     * @type {String[]}
+     * Defines calls that make methods unpure.
+     * "Obj.*" means that any method of "Obj" object will raise the error/warning.
+     */
+    "unpure-expressions": [
+        "Math.random", "Date.now", "_.now"
+    ]
+}
+
+```

@@ -6,6 +6,6 @@ module.exports = {
     },
 
     rulesConfig: {
-        "pure": [2, 'formatter', 'helper']
+        "pure": [2, 'format', 'help', 'util']
     }
 };
