@@ -11,7 +11,7 @@ Check the pureness of some files.
 1. Create the `test-me/` folder and put test files in it.
 1. Create the `.eslintrc` file _(see the example below)._  
    **Pay attention,** at least one `"pureness/pure"` option should match the filename in `test-me/` folder. For instance, `"pureness/pure": [2, "formatter"]` and `test-me/some-formatter.es`.  
-   See [Usage](#Usage%20in%20production) for more info.
+   See [Usage](#usage-in-production) for more info.
 1. Create the `.eslint-plugin-pureness-rc` file _(see the example below)._
 1. Run `node node_modules/eslint/bin/eslint.js test-me/<your-file.es>` to check how the plugin works.
 1. After development is done,
