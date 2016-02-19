@@ -16,7 +16,7 @@ Check the pureness of some files.
    **Why?** Npm changed the `peerDependencies` treatment since v3.
 1. Create the softlink from project root folder to `node_modules\eslint-plugin-pureness`:
   - Linux: `sudo ln -s node_modules/eslint-plugin-pureness ./`;
-  - Windows: `junction -s node_modules\eslint-plugin-pureness .\` (usually you have to install `junction`).
+  - Windows: `junction -s node_modules\eslint-plugin-pureness .\` _(usually you have to install the `junction`)_.
 1. Create the `test-me/` folder and put test files in it.
 1. Create the `.eslintrc` file _(see the example below)._  
    **Pay attention,** at least one `"pureness/pure"` option should match the filename in `test-me/` folder. For instance, `"pureness/pure": [2, "formatter"]` and `test-me/some-formatter.es`.  
