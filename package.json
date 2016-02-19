@@ -1,5 +1,5 @@
 {
-  "name": "eslin-plugin-pureness",
+  "name": "eslint-plugin-pureness",
   "version": "1.0.0",
   "description": "ESLint plugin. Verifies code pureness",
   "main": "index.js",
