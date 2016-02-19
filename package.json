@@ -24,9 +24,8 @@
     "url": "https://github.com/rom-melnyk/eslint-plugin-pureness"
   },
   "license": "ISC",
-  "devDependencies": {
-    "eslint": "^1.10.3",
-    "eslint-plugin-react": "^3.16.1"
+  "peerDependencies": {
+    "eslint": "^1.10.3"
   },
   "dependencies": {
     "rc": "^1.1.6"

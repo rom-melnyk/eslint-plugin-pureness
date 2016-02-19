@@ -1,3 +1,7 @@
 .idea/
 node_modules/
 
+test-me/
+test_me/
+
+.eslint*
