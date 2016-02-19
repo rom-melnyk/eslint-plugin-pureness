@@ -1,7 +1,7 @@
 # ESLint plugin: Pureness
 Check the pureness of some files.
 
-# Usage in production
+# Usage
 1. Install the plugin via `npm install --save-dev git://git@github.com/rom-melnyk/eslint-plugin-pureness`
 1. Include `"pureness"` to the `"plugins": []` array of your `.eslintrc` file.
 1. Add the rule definition to the `"rules": {}` object like this:  
@@ -10,7 +10,7 @@ Check the pureness of some files.
    **Pay attention,** filename parts are case-insensitive (Unix and Windows users should work fine together).
 1. Create the `.eslint-plugin-pureness-rc` file which describes project-specific unpure calls _(see the example below)._
 
-# Development
+# Plugin development
 1. Run `npm install`.
   - If you use `npm 3+`, install **eslint** by running `npm install eslint`.  
    **Why?** Npm changed the `peerDependencies` treatment since v3.
@@ -20,7 +20,7 @@ Check the pureness of some files.
 1. Create the `test-me/` folder and put test files in it.
 1. Create the `.eslintrc` file _(see the example below)._  
    **Pay attention,** at least one `"pureness/pure"` option should match the filename in `test-me/` folder. For instance, `"pureness/pure": [2, "formatter"]` and `test-me/some-formatter.es`.  
-   See [Usage](#usage-in-production) for more info.
+   See [Usage](#usage) for more info.
 1. Create the `.eslint-plugin-pureness-rc` file _(see the example below)._
 1. Run `node node_modules/eslint/bin/eslint.js test-me/<your-file.es>` to check how the plugin works.
 1. After development is done,
@@ -34,6 +34,10 @@ Check the pureness of some files.
         "browser": true,
         "node": true,
         "es6": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
     },
     "plugins": [
         "pureness"
