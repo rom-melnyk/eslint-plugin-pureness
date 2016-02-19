@@ -1,6 +1,15 @@
 # ESLint plugin: Pureness
 Check the pureness of some files.
 
+# Usage in production
+1. Install the plugin via `npm install --save-dev git://git@github.com/rom-melnyk/eslint-plugin-pureness`
+1. Include `"pureness"` to the `"plugins": []` array of your `.eslintrc` file.
+1. Add the rule definition to the `"rules": {}` object like this:  
+   `"pureness/pure": [2, "formatter", "helper"]`  
+   what means that if `"formatter"` or `"helper"` is the part of the _full filename,_ the file **will be analyzed** otherwise it **will be ignored**.  
+   **Pay attention,** filename parts are case-insensitive (Unix and Windows users should work fine together).
+1. Create the `.eslint-plugin-pureness-rc` file which describes project-specific unpure calls _(see the example below)._
+
 # Development
 1. Run `npm install`.
   - If you use `npm 3+`, install **eslint** by running `npm install eslint`.  
@@ -17,15 +26,6 @@ Check the pureness of some files.
 1. After development is done,
   1. create new git annotated tag, `git tag -a <version.number> -m "New release"`
   1. and push it: `git push origin <version.number>`
-
-# Usage in production
-1. Install the plugin via `npm install --save-dev git://git@github.com/rom-melnyk/eslint-plugin-pureness`
-1. Include `"pureness"` to the `"plugins": []` array of your `.eslintrc` file.
-1. Add the rule definition to the `"rules": {}` object like this:  
-   `"pureness/pure": [2, "formatter", "helper"]`  
-   what means that if `"formatter"` or `"helper"` is the part of the _full filename,_ the file **will be analyzed** otherwise it **will be ignored**.  
-   **Pay attention,** filename parts are case-insensitive (Unix and Windows users should work fine together).
-1. Create the `.eslint-plugin-pureness-rc` file which describes project-specific unpure calls _(see the example below)._
 
 # `.eslintrc` example
 ```
@@ -69,3 +69,6 @@ Check the pureness of some files.
     ]
 }
 ```
+
+# Credits
+Roman Melnyk, <email.rom.melnyk@gmail.com>, https://codedoc255.wordpress.com
