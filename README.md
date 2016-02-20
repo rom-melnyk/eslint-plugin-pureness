@@ -10,6 +10,13 @@ Check the pureness of some files.
    **Pay attention,** filename parts are case-insensitive (Unix and Windows users should work fine together).
 1. Create the `.eslint-plugin-pureness-rc` file which describes project-specific unpure calls _(see the example below)._
 
+# History
+- **v1.0.1**
+  - `new Ctor()` is considered as unpure code too.
+- **v1.0.0** The newborn.
+  - Plugin understands unpure expressions like `Date.now()`;
+  - Expression list is configurable.
+
 # Plugin development
 1. Run `npm install`.
   - If you use `npm 3+`, install **eslint** by running `npm install eslint`.  
@@ -69,7 +76,13 @@ Check the pureness of some files.
      */
     "unpure-expressions": [
         "Math.random", "Date.now", "_.now"
-    ]
+    ],
+
+    /**
+     * @type {Boolean}
+     * Defines whether or not to allow `new Ctor()` in pure methods.
+     */
+    "allow-new": false
 }
 ```
 
