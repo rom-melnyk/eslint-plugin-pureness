@@ -24,8 +24,8 @@ Check the pureness of some files.
 1. Create the softlink from project root folder to `node_modules\eslint-plugin-pureness`:
   - Linux: `sudo ln -s $(pwd) $(pwd)/node_modules/eslint-plugin-pureness`;
   - Windows: `junction -s node_modules\eslint-plugin-pureness .\` _(usually you have to install the `junction`)_.
-1. Create the `test-me/` folder and put test files in it.
-1. Create the `.eslintrc` file _(see the [example](#eslintrc-example) below)._
+1. Create the `test-me/` folder and put test files in it _(see the [example](#test-mesome-formatteres-example-for-development-purposes) below)_.
+1. Create the `.eslintrc` file _(see the [example](#eslintrc-example-for-development-purposes) below)._
   - Ensure [file masks](#file-masks) for rules match the filename in `test-me/` folder. For instance, `"pureness/allow-new": [2, "formatter"]` and `test-me/some-formatter.es`.
 1. Run `node node_modules/eslint/bin/eslint.js test-me/<your-file.es>` to check how the plugin works.
 1. After development is done,
