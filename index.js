@@ -2,10 +2,12 @@
 
 module.exports = {
     rules: {
-        "pure": require('./lib/pure')
+        //"forbid": require('./lib/forbid'),
+        "allow-new": require('./lib/allow-new')
     },
 
     rulesConfig: {
-        "pure": [2, 'format', 'help', 'util']
+        "forbid": 2,
+        "allow-new": 1
     }
 };
