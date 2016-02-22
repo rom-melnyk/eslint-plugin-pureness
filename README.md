@@ -34,6 +34,7 @@ Check the pureness of some files.
 
 # File masks
 Each plugin rule could be run against certain files determined by _masks_. A **mask** is the part of the _full file path._ Say you have `"pureness/allow-new": [2, "formatter", "helper"]`, so both `~/app/src/formatters/time.es` and `~/app/src/utils/time-helper.es` are verified but `~/app/src/views/clock.es` is skipped for this particular rule.
+
 **Mind following:**
 - by default, without defining correct masks, plugin rules won't work;
 - masks are case-insensitive (Unix and Windows users should work fine together;
@@ -67,9 +68,9 @@ Forbids certain expressions in given files. **`<options>`** is `Object` or `Obje
 ]]
 ```
 
-## `"pureness/allow-new": [2, <...masks>]`
+## `"pureness/allow-new": [1, <...masks>]`
 This raises the error/warning when meets `new SomeConstructor()` in any file that matches any of given masks.
-**Example:** `"pureness/allow-new": [2, "formatter", "helper"]`
+**Example:** `"pureness/allow-new": [1, "formatter", "helper"]`
 
 # `.eslintrc` example
 ```
@@ -91,7 +92,16 @@ This raises the error/warning when meets `new SomeConstructor()` in any file tha
     ],
     "rules": {
         // pureness-related
-        "pureness/pure": [2, {}],
+        "pureness/pure": [2, [
+            {
+                "masks": "formatter",
+                "expressions": ["Date.now", "_.now"]
+            },
+            {
+                "masks": ["helper"],
+                "expressions": "adapter.*"
+            }
+        ]],
         "pureness/allow-new": [1, "formatter"],
 
         // some general rules for testing purposes
