@@ -2,12 +2,12 @@
 
 module.exports = {
     rules: {
-        "forbid": require('./lib/forbid'),
+        "forbidden-expressions": require('./lib/forbidden-expressions'),
         "allow-new": require('./lib/allow-new')
     },
 
     rulesConfig: {
-        "forbid": 2,
+        "forbidden-expressions": 1,
         "allow-new": 1
     }
 };

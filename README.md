@@ -26,7 +26,7 @@ Check the pureness of some files.
   - Windows: `junction -s node_modules\eslint-plugin-pureness .\` _(usually you have to install the `junction`)_.
 1. Create the `test-me/` folder and put test files in it.
 1. Create the `.eslintrc` file _(see the [example](#eslintrc-example) below)._
-  - Ensure [file masks](#file-masks) for rules match the filename in `test-me/` folder. For instance, `"pureness/forbid": [2, "formatter"]` and `test-me/some-formatter.es`.
+  - Ensure [file masks](#file-masks) for rules match the filename in `test-me/` folder. For instance, `"pureness/allow-new": [2, "formatter"]` and `test-me/some-formatter.es`.
 1. Run `node node_modules/eslint/bin/eslint.js test-me/<your-file.es>` to check how the plugin works.
 1. After development is done,
   1. create new git annotated tag, `git tag -a <version.number> -m "New release"`
@@ -41,8 +41,8 @@ Each plugin rule could be run against certain files determined by _masks_. A **m
 - `"*"` means force verifying all files.
 
 # Rules
-## `"pureness/forbid": [2, <options>]`
-Forbids certain expressions in given files. **`<options>`** is `Object` or `Objects[]` of following structure:
+## `"pureness/forbidden-expressions": [2, <...options>]`
+Forbids certain expressions in given files. **`<...options>`** is the sequence `Object`s of following structure:
 
 - **`"masks"`** is `String` or `String[]`; determines which files to verify;
 - **`"expression"`** is `String` or `String[]`, determines the list of forbidden calls, like `"ObjectName.methodName"` or `"ObjectName.*"`
@@ -50,13 +50,15 @@ Forbids certain expressions in given files. **`<options>`** is `Object` or `Obje
 **Example:**
 ```
 // ----- single rule -----
-"pureness/forbid": [2, {
-  "masks": "formatter",
-  "expressions": ["Date.now", "_.now"]
-}]
+"pureness/forbidden-expressions": [2,
+  {
+    "masks": "formatter",
+    "expressions": ["Date.now", "_.now"]
+  }
+]
 
 // ----- different rules for different areas -----
-"pureness/forbid": [2, [
+"pureness/forbidden-expressions": [2,
   {
     "masks": ["formatter", "helper"],
     "expressions": ["Date.now", "_.now"]
@@ -65,7 +67,7 @@ Forbids certain expressions in given files. **`<options>`** is `Object` or `Obje
     "masks": "view",
     "expressions": ["adapter.*", "Math.random"]
   }
-]]
+]
 ```
 
 ## `"pureness/allow-new": [1, <...masks>]`
@@ -86,14 +88,14 @@ This raises the error/warning when meets `new SomeConstructor()` in any file tha
         "sourceType": "module",
         "ecmaFeatures": {
             "jsx": true
-        },
+        }
     },
     "plugins": [
         "pureness"
     ],
     "rules": {
         // pureness-related
-        "pureness/forbid": [2, [
+        "pureness/forbidden-expressions": [2,
             {
                 "masks": "formatter",
                 "expressions": ["Date.now", "_.now"]
@@ -102,7 +104,7 @@ This raises the error/warning when meets `new SomeConstructor()` in any file tha
                 "masks": ["helper"],
                 "expressions": "adapter.*"
             }
-        ]],
+        ],
         "pureness/allow-new": [1, "formatter"],
 
         // some general rules for testing purposes
