@@ -8,8 +8,8 @@ Check the pureness of some files.
 
 # History
 - **v2.0.0**
-  - `.eslint-plugin-pureness-rc` removed;
-  - config now resides in `.eslintrc`.
+  - `.eslint-plugin-pureness-rc` removed; config now resides in `.eslintrc`;
+  - `"pureness/pure"` does not exist anymore, see [rules](#rules) below.
 - **v1.0.1**
   - an error was fixed in the `"pureness/pure"` analyzer;
   - `new Ctor()` is considered as unpure code too.
@@ -26,7 +26,7 @@ Check the pureness of some files.
   - Windows: `junction -s node_modules\eslint-plugin-pureness .\` _(usually you have to install the `junction`)_.
 1. Create the `test-me/` folder and put test files in it.
 1. Create the `.eslintrc` file _(see the [example](#eslintrc-example) below)._
-  - Ensure [file masks](#file-masks) for rules match the filename in `test-me/` folder. For instance, `"pureness/pure": [2, "formatter"]` and `test-me/some-formatter.es`.
+  - Ensure [file masks](#file-masks) for rules match the filename in `test-me/` folder. For instance, `"pureness/forbid": [2, "formatter"]` and `test-me/some-formatter.es`.
 1. Run `node node_modules/eslint/bin/eslint.js test-me/<your-file.es>` to check how the plugin works.
 1. After development is done,
   1. create new git annotated tag, `git tag -a <version.number> -m "New release"`
@@ -93,7 +93,7 @@ This raises the error/warning when meets `new SomeConstructor()` in any file tha
     ],
     "rules": {
         // pureness-related
-        "pureness/pure": [2, [
+        "pureness/forbid": [2, [
             {
                 "masks": "formatter",
                 "expressions": ["Date.now", "_.now"]

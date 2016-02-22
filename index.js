@@ -2,7 +2,7 @@
 
 module.exports = {
     rules: {
-        //"forbid": require('./lib/forbid'),
+        "forbid": require('./lib/forbid'),
         "allow-new": require('./lib/allow-new')
     },
 

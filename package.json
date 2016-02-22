@@ -28,8 +28,5 @@
   "peerDependencies": {
     "eslint": "^2.1.0"
   },
-  "dependencies": {
-    "rc": "^1.1.6"
-  },
   "private": true
 }
