@@ -75,7 +75,7 @@ This raises the error/warning when meets `new SomeConstructor()` in any file tha
 
 **Example:** `"pureness/allow-new": [1, "formatter", "helper"]`
 
-# `.eslintrc` example
+# `.eslintrc` example _(for development purposes)_
 ```
 {
     "env": {
@@ -114,6 +114,37 @@ This raises the error/warning when meets `new SomeConstructor()` in any file tha
     "globals": {
         "_": true
     }
+}
+```
+
+# `test-me/some-formatter.es` example _(for development purposes)_
+```
+import adapter from 'adapter';
+
+export function format_01(value) {
+    let x;
+    return value;
+}
+
+export function format_02(value) {
+    value++;
+    return value + Math.random() + _.now();
+}
+
+export function format_03(value) {
+    adapter.do('azaza', value);
+    return value;
+}
+
+export function format_04(value) {
+    let x = new  Date();
+    let y = new  Date.some.Ctor();
+    let z = new  Promise((resolve) => {
+        "use strict";
+        // here be dragons
+    });
+
+    return value + x + y + z;
 }
 ```
 
