@@ -26,14 +26,14 @@ Check the pureness of some files.
   - Windows: `junction -s node_modules\eslint-plugin-pureness .\` _(usually you have to install the `junction`)_.
 1. Create the `test-me/` folder and put test files in it _(see the [example](#test-mesome-formatteres-example-for-development-purposes) below)_.
 1. Create the `.eslintrc` file _(see the [example](#eslintrc-example-for-development-purposes) below)._
-  - Ensure [file masks](#file-masks) for rules match the filename in `test-me/` folder. For instance, `"pureness/allow-new": [2, "formatter"]` and `test-me/some-formatter.es`.
+  - Ensure [file masks](#file-masks) for rules match the filename in `test-me/` folder. For instance, `"pureness/forbid-new": [2, "formatter"]` and `test-me/some-formatter.es`.
 1. Run `node node_modules/eslint/bin/eslint.js test-me/<your-file.es>` to check how the plugin works.
 1. After development is done,
   1. create new git annotated tag, `git tag -a <version.number> -m "New release"`
   1. and push it: `git push origin <version.number>`
 
 # File masks
-Each plugin rule could be run against certain files determined by _masks_. A **mask** is the part of the _full file path._ Say you have `"pureness/allow-new": [2, "formatter", "helper"]`, so both `~/app/src/formatters/time.es` and `~/app/src/utils/time-helper.es` are verified but `~/app/src/views/clock.es` is skipped for this particular rule.
+Each plugin rule could be run against certain files determined by _masks_. A **mask** is the part of the _full file path._ Say you have `"pureness/forbid-new": [2, "formatter", "helper"]`, so both `~/app/src/formatters/time.es` and `~/app/src/utils/time-helper.es` are verified but `~/app/src/views/clock.es` is skipped for this particular rule.
 
 **Mind following:**
 - by default, without defining correct masks, plugin rules won't work;
@@ -42,7 +42,7 @@ Each plugin rule could be run against certain files determined by _masks_. A **m
 
 # Rules
 ## `"pureness/forbidden-expressions": [2, <...options>]`
-Forbids certain expressions in given files. **`<...options>`** is the sequence `Object`s of following structure:
+Forbids certain expressions in given files. **`<...options>`** is the sequence objects of following structure:
 
 - **`"masks"`** is `String` or `String[]`; determines which files to verify;
 - **`"expression"`** is `String` or `String[]`, determines the list of forbidden calls, like `"ObjectName.methodName"` or `"ObjectName.*"`
@@ -70,10 +70,24 @@ Forbids certain expressions in given files. **`<...options>`** is the sequence `
 ]
 ```
 
-## `"pureness/allow-new": [1, <...masks>]`
-This raises the error/warning when meets `new SomeConstructor()` in any file that matches any of given masks.
+## `"pureness/forbidden-import": [2, <...options>]`
+Forbids importing/requiring certain modules in given files. **`<...options>`** work in same way as in `"pureness/forbidden-expressions"` but use **`"modules"`** instead of `"expressions"` (part of module name works as mask).
 
-**Example:** `"pureness/allow-new": [1, "formatter", "helper"]`
+**Example:**
+```
+// ----- single rule -----
+"pureness/forbidden-import": [2,
+  {
+    "masks": "formatter",
+    "modules": ["adapter", "class"] // works against require('./classMate') and require('classnames')
+  }
+]
+```
+
+## `"pureness/forbid-new": [1, <...masks>]`
+This raises the error/warning when meets `new SomeConstructor()` in any file that matches any of given masks. **`<...masks>`** is sequence of strings.
+
+**Example:** `"pureness/forbid-new": [1, "formatter", "helper"]`
 
 # `.eslintrc` example _(for development purposes)_
 ```
@@ -105,7 +119,13 @@ This raises the error/warning when meets `new SomeConstructor()` in any file tha
                 "expressions": "adapter.*"
             }
         ],
-        "pureness/allow-new": [1, "formatter"],
+        "pureness/forbidden-import": [2,
+            {
+                "masks": "formatter",
+                "modules": ["path", "ada"]
+            }
+        ],
+        "pureness/forbid-new": [1, "formatter"],
 
         // some general rules for testing purposes
         "eqeqeq": [2, "allow-null"],
@@ -120,6 +140,7 @@ This raises the error/warning when meets `new SomeConstructor()` in any file tha
 # `test-me/some-formatter.es` example _(for development purposes)_
 ```
 import adapter from 'adapter';
+const path = require('path');
 
 export function format_01(value) {
     let x;
