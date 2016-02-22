@@ -69,7 +69,7 @@ Forbids certain expressions in given files. **`<options>`** is `Object` or `Obje
 ```
 
 ## `"pureness/allow-new": [1, <...masks>]`
-This raises the error/warning when meets `new SomeConstructor()` in any file that matches any of given masks.
+This raises the error/warning when meets `new SomeConstructor()` in any file that matches any of given masks.  
 **Example:** `"pureness/allow-new": [1, "formatter", "helper"]`
 
 # `.eslintrc` example
