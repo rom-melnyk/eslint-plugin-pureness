@@ -1,7 +1,5 @@
 .idea/
 node_modules/
 
-test-me/
-test_me/
+npm-debug.log
 
-.eslint*

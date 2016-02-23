@@ -7,6 +7,9 @@ Check the pureness of some files.
 1. Add the rule definition to the `"rules": {}` object. See [rules](#rules) below.
 
 # History
+- **v2.0.1**
+  - documentation updated;
+  - publishing.
 - **v2.0.0**
   - `.eslint-plugin-pureness-rc` removed; config now resides in `.eslintrc`;
   - `"pureness/pure"` does not exist anymore, see [rules](#rules) below.
@@ -24,10 +27,7 @@ Check the pureness of some files.
 1. Create the softlink from project root folder to `node_modules\eslint-plugin-pureness`:
   - Linux: `sudo ln -s $(pwd) $(pwd)/node_modules/eslint-plugin-pureness`;
   - Windows: `junction -s node_modules\eslint-plugin-pureness .\` _(usually you have to install the `junction`)_.
-1. Create the `test-me/` folder and put test files in it _(see the [example](#test-mesome-formatteres-example-for-development-purposes) below)_.
-1. Create the `.eslintrc` file _(see the [example](#eslintrc-example-for-development-purposes) below)._
-  - Ensure [file masks](#file-masks) for rules match the filename in `test-me/` folder. For instance, `"pureness/forbid-new": [2, "formatter"]` and `test-me/some-formatter.es`.
-1. Run `node node_modules/eslint/bin/eslint.js test-me/<your-file.es>` to check how the plugin works.
+1. Run `node node_modules/eslint/bin/eslint.js test-me/*` to check how the plugin works.
 1. After development is done,
   1. create new git annotated tag, `git tag -a <version.number> -m "New release"`
   1. and push it: `git push origin <version.number>`
@@ -89,85 +89,7 @@ This raises the error/warning when meets `new SomeConstructor()` in any file tha
 
 **Example:** `"pureness/forbid-new": [1, "formatter", "helper"]`
 
-# `.eslintrc` example _(for development purposes)_
-```
-{
-    "env": {
-        "browser": true,
-        "node": true,
-        "es6": true
-    },
-    "parserOptions": {
-        "ecmaVersion": 6,
-        "sourceType": "module",
-        "ecmaFeatures": {
-            "jsx": true
-        }
-    },
-    "plugins": [
-        "pureness"
-    ],
-    "rules": {
-        // pureness-related
-        "pureness/forbidden-expressions": [2,
-            {
-                "masks": "formatter",
-                "expressions": ["Date.now", "_.now"]
-            },
-            {
-                "masks": ["helper"],
-                "expressions": "adapter.*"
-            }
-        ],
-        "pureness/forbidden-import": [2,
-            {
-                "masks": "formatter",
-                "modules": ["path", "ada"]
-            }
-        ],
-        "pureness/forbid-new": [1, "formatter"],
-
-        // some general rules for testing purposes
-        "eqeqeq": [2, "allow-null"],
-        "no-undef": 2
-    },
-    "globals": {
-        "_": true
-    }
-}
-```
-
-# `test-me/some-formatter.es` example _(for development purposes)_
-```
-import adapter from 'adapter';
-const path = require('path');
-
-export function format_01(value) {
-    let x;
-    return value;
-}
-
-export function format_02(value) {
-    value++;
-    return value + Math.random() + _.now();
-}
-
-export function format_03(value) {
-    adapter.do('azaza', value);
-    return value;
-}
-
-export function format_04(value) {
-    let x = new  Date();
-    let y = new  Date.some.Ctor();
-    let z = new  Promise((resolve) => {
-        "use strict";
-        // here be dragons
-    });
-
-    return value + x + y + z;
-}
-```
+---
 
 # Credits
-Roman Melnyk, <email.rom.melnyk@gmail.com>, https://codedoc255.wordpress.com
+Roman Melnyk, <email.rom.melnyk@gmail.com>, (https://codedoc255.wordpress.com)
