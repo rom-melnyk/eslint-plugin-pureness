@@ -1,5 +1,8 @@
 import adapter from 'adapter';
-const path = require('path');
+   import { method1
+       as adapterMethod1
+   } from 'notA_d_apter';
+  const path = require('path');
 
 export function format_01(value) {
     let x;
