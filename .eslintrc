@@ -28,7 +28,7 @@
         "pureness/forbidden-import": [2,
             {
                 "masks": "formatter",
-                "modules": ["path", "ada"]
+                "modules": ["path", "adapt"]
             }
         ],
         "pureness/forbid-new": [1, "formatter"],

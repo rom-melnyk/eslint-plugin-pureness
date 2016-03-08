@@ -7,6 +7,9 @@ Check the pureness of some files.
 1. Add the rule definition to the `"rules": {}` object. See [rules](#rules) below.
 
 # History
+- **v2.1.0**
+  - `import { forbidden } from 'non_forbidden';` recognized;
+  - `"*"` is recognized as object name wildcard.
 - **v2.0.1**
   - documentation updated;
   - publishing.
@@ -45,7 +48,7 @@ Each plugin rule could be run against certain files determined by _masks_. A **m
 Forbids certain expressions in given files. **`<...options>`** is the sequence objects of following structure:
 
 - **`"masks"`** is `String` or `String[]`; determines which files to verify;
-- **`"expression"`** is `String` or `String[]`, determines the list of forbidden calls, like `"ObjectName.methodName"` or `"ObjectName.*"`
+- **`"expression"`** is `String` or `String[]`, determines the list of forbidden calls, like `"ObjectName.methodName"`. `"*"` is allowed as a wildcard for both _ObjectName_ and _methodName_.
 
 **Example:**
 ```
@@ -75,17 +78,16 @@ Forbids importing/requiring certain modules in given files. **`<...options>`** w
 
 **Example:**
 ```
-// ----- single rule -----
 "pureness/forbidden-import": [2,
   {
     "masks": "formatter",
-    "modules": ["adapter", "class"] // works against require('./classMate') and require('classnames')
+    "modules": ["adapter", "class"] // works against `require('./classMate')` and `require('classnames')`
   }
 ]
 ```
 
 ## `"pureness/forbid-new": [1, <...masks>]`
-This raises the error/warning when meets `new SomeConstructor()` in any file that matches any of given masks. **`<...masks>`** is sequence of strings.
+Raises the error/warning when meets `new AnyConstructor()` in any file that matches any of given masks. **`<...masks>`** is sequence of strings.
 
 **Example:** `"pureness/forbid-new": [1, "formatter", "helper"]`
 
