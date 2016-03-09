@@ -7,6 +7,8 @@ Check the pureness of some files.
 1. Add the rule definition to the `"rules": {}` object. See [rules](#rules) below.
 
 # History
+- **v2.1.1**
+  - `import/require` things are now case-insensitive.
 - **v2.1.0**
   - `import { forbidden } from 'non_forbidden';` recognized;
   - `"*"` is recognized as object name wildcard.
@@ -48,7 +50,8 @@ Each plugin rule could be run against certain files determined by _masks_. A **m
 Forbids certain expressions in given files. **`<...options>`** is the sequence objects of following structure:
 
 - **`"masks"`** is `String` or `String[]`; determines which files to verify;
-- **`"expression"`** is `String` or `String[]`, determines the list of forbidden calls, like `"ObjectName.methodName"`. `"*"` is allowed as a wildcard for both _ObjectName_ and _methodName_.
+- **`"expressions"`** is `String` or `String[]`, determines the list of forbidden calls, like `"ObjectName.methodName"`. `"*"` is allowed as a wildcard for both _ObjectName_ and _methodName_.  
+   **`"expressions"`** are case-sensitive (according to JS rules).
 
 **Example:**
 ```
@@ -74,14 +77,18 @@ Forbids certain expressions in given files. **`<...options>`** is the sequence o
 ```
 
 ## `"pureness/forbidden-import": [2, <...options>]`
-Forbids importing/requiring certain modules in given files. **`<...options>`** work in same way as in `"pureness/forbidden-expressions"` but use **`"modules"`** instead of `"expressions"` (part of module name works as mask).
+Forbids importing/requiring certain modules in given files. **`<...options>`** work in same way as in `"pureness/forbidden-expressions"` but use **`"modules"`** instead of `"expressions"`.
+
+- Part of the module name works _as a mask_ so following example works against both `require('./classMate')` and `require('classnames')`.
+- **`"modules"`** are case-insensitive, so `import Cls from './MyPrettyClass'` also raises an error.
+- Submodules and import decomposition is also analyzed. `import { MyClass } from './allowed-file'` raises the error with following example as well.
 
 **Example:**
 ```
 "pureness/forbidden-import": [2,
   {
     "masks": "formatter",
-    "modules": ["adapter", "class"] // works against `require('./classMate')` and `require('classnames')`
+    "modules": ["adapter", "class"]
   }
 ]
 ```
