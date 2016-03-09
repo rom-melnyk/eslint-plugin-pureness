@@ -1,6 +1,6 @@
-import adapter from 'adapter';
-import { adapterMethod1 as method1, notA_d_apterMethod2, adapterMethod3 } from 'notA_d_apter';
-const path = require('path');
+import adapter from 'aDAPTer';
+import { adapterMethod1 as method1, notA_d_apterMethod2, AdapterMethod3 } from 'notA_d_apter';
+const path = require('Path');
 
 export function format_01(value) {
     let x;
