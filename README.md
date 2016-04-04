@@ -7,6 +7,9 @@ Check the pureness of some files.
 1. Add the rule definition to the `"rules": {}` object. See [rules](#rules) below.
 
 # History
+- **v2.2.0**
+  - `Promise.then()` sequence recognition;
+  - `new Date` vs `new Date(param)` distinguishing.
 - **v2.1.1**
   - `import/require` things are now case-insensitive.
 - **v2.1.0**
@@ -97,6 +100,11 @@ Forbids importing/requiring certain modules in given files. **`<...options>`** w
 Raises the error/warning when meets `new AnyConstructor()` in any file that matches any of given masks. **`<...masks>`** is sequence of strings.
 
 **Example:** `"pureness/forbid-new": [1, "formatter", "helper"]`
+
+## `"pureness/promise-catch": [1, <...masks>]`
+Ensures all the `.then()` sequences are terminated by `.catch()` or `.done()`, otherwise raises the error/warning. **`<...masks>`** is sequence of strings.
+
+**Example:** `"pureness/promise-catch": [1, "*"]`
 
 ---
 
