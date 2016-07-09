@@ -32,6 +32,7 @@
             }
         ],
         "pureness/forbid-new": [1, "formatter"],
+        "pureness/promise-catch": [1, "formatter"],
 
         // some general rules for testing purposes
         "eqeqeq": [2, "allow-null"],
