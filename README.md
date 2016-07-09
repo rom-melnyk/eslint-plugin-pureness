@@ -44,8 +44,8 @@ Check the pureness of some files.
 Each plugin rule could be run against certain files determined by _masks_. A **mask** is the part of the _full file path._ Say you have `"pureness/forbid-new": [2, "formatter", "helper"]`, so both `~/app/src/formatters/time.es` and `~/app/src/utils/time-helper.es` are verified but `~/app/src/views/clock.es` is skipped for this particular rule.
 
 **Mind following:**
-- by default, without defining correct masks, plugin rules won't work;
-- masks are case-insensitive (Unix and Windows users should work fine together;
+- plugin rules **don't work by default** until you define correct mask(-s);
+- masks are case-insensitive (Unix and Windows users should work fine together);
 - `"*"` means force verifying all files.
 
 # Rules
