@@ -23,7 +23,7 @@ export function format_04(value) {
     let z = new  Promise((resolve) => {
         "use strict";
         // here be dragons
-    }).then();
+    }).then().then();
 
     return value + x + y + z;
 }
