@@ -19,7 +19,7 @@ export function format_03(value) {
 
 export function format_04(value) {
     let x = new  Date();
-    let y = new  Date.some.Ctor();
+    let y = new  Date.some.Ctor(123);
     let z = new  Promise((resolve) => {
         "use strict";
         // here be dragons
