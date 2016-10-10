@@ -7,6 +7,9 @@ Check the pureness of some files.
 1. Add the rule definition to the `"rules": {}` object. See [rules](#rules) below.
 
 # History
+- **v2.2.0**
+  - file mask wildcards supported;
+  - TODO: fix `Date(...)` issue.
 - **v2.1.1**
   - `import/require` things are now case-insensitive.
 - **v2.1.0**
@@ -43,7 +46,8 @@ Each plugin rule could be run against certain files determined by _masks_. A **m
 **Mind following:**
 - by default, without defining correct masks, plugin rules won't work;
 - masks are case-insensitive (Unix and Windows users should work fine together;
-- `"*"` means force verifying all files.
+- the asterisk `*` is treated as the wildcard. So the mask `"domains/*/actions.es"` will check all the actions files within the `domains/` folder but not `filters/actions.es`.  
+   The mask `"*"` forces verifying all files.
 
 # Rules
 ## `"pureness/forbidden-expressions": [2, <...options>]`
