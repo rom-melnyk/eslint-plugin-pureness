@@ -26,6 +26,6 @@
   },
   "license": "ISC",
   "peerDependencies": {
-    "eslint": "^2.1.0"
+    "eslint": ">=2.1.0"
   }
 }
