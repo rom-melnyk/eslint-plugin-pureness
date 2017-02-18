@@ -2,13 +2,15 @@
 Check the pureness of some files.
 
 # Usage
-1. Install the plugin via `npm install --save-dev git://git@github.com/rom-melnyk/eslint-plugin-pureness`
+1. Install the plugin via `npm install --save-dev eslint-plugin-pureness`
 1. Include `"pureness"` to the `"plugins": []` array of your `.eslintrc` file.
 1. Add the rule definition to the `"rules": {}` object. See [rules](#rules) below.
 
 # History
+- **v2.1.2**
+  - ESLint version bumped.
 - **v2.1.1**
-  - `import/require` things are now case-insensitive.
+  - `import/require` things are now case-insensitive. This version **still works with ESLint v2.x.x** but installation emits warnings.
 - **v2.1.0**
   - `import { forbidden } from 'non_forbidden';` recognized;
   - `"*"` is recognized as object name wildcard.
