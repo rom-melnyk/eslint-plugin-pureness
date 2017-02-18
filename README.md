@@ -29,8 +29,7 @@ Check the pureness of some files.
 
 # Plugin development
 1. Run `npm install`.
-  - If you use `npm 3+`, install **eslint** by running `npm install eslint`.  
-   **Why?** Npm changed the `peerDependencies` treatment since v3.
+  - Run `npm install && npm install eslint` (it's mandatory to install **eslint** separately because `npm` changed the `peerDependencies` treatment since v3).
 1. Create the softlink from project root folder to `node_modules\eslint-plugin-pureness`:
   - Linux: `sudo ln -s $(pwd) $(pwd)/node_modules/eslint-plugin-pureness`;
   - Windows: `junction -s node_modules\eslint-plugin-pureness .\` _(usually you have to install the `junction`)_.
