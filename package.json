@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-pureness",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "ESLint plugin. Verifies code pureness",
   "main": "index.js",
   "scripts": {
@@ -26,6 +26,6 @@
   },
   "license": "ISC",
   "peerDependencies": {
-    "eslint": "^2.1.0"
+    "eslint": ">=2.1.0"
   }
 }
