@@ -31,7 +31,17 @@
                 "modules": ["path", "adapt"]
             }
         ],
-        "pureness/forbid-new": [1, "formatter"],
+        // --- old syntax ---
+        // "pureness/forbid-new": [1, "formatter"],
+        // --- new syntax ---
+        "pureness/forbid-new": ["warn", {
+            "masks": "formatter",
+            "allowWithParams": "Date"
+        },
+        {
+            "masks": "*",
+            "allow": ["Promise"]
+        }],
 
         // some general rules for testing purposes
         "eqeqeq": [2, "allow-null"],
