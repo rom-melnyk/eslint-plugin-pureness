@@ -39,7 +39,7 @@ Each rule ha syntax `"pureness/<rule-name>": [<level>, <...options>]`, where
    both `src/formatters/time.es` and `src/utils/time-helper.es` are verified but `src/views/clock.es` is skipped for this particular rule.
 
 **Mind following:**
-- by default, without defining correct masks, plugin rules won't work;
+- by default, without defining correct **masks,** plugin rules won't work;
 - masks are case-insensitive (Unix and Windows users should work fine together;
 - `"*"` means force verifying all files.
 
