@@ -7,6 +7,8 @@ Check the pureness of some files.
 1. Add the rule definition to the `"rules": {}` object. See [rules](#rules) below.
 
 # History
+- **v2.2.1**
+  - Docs fixed.
 - **v2.2.0**
   - `pureness/forbid-new` recognizes params so far.
   - new syntax of `forbid-new` rule introduced.
