@@ -8,7 +8,7 @@ Check the pureness of some files.
 
 # History
 - **v2.2.0**
-  - `new Ctor(...)` might be considered as pure if used with params.
+  - `pureness/forbid-new` recognizes params so far.
   - new syntax of `forbid-new` rule introduced.
 - **v2.1.2**
   - ESLint version bumped.
@@ -34,9 +34,9 @@ Check the pureness of some files.
 Each rule ha syntax `"pureness/<rule-name>": [<level>, <...options>]`, where
 - **`<rule-name>`** is one of described below,
 - **`<level>`** is error level to raise (`"warn"`, `"error"`, or `1` and `2` according to legacy rules),
-- **`<...options>`** is the sequence of objects describing rule-specific parameters. Every object **must contain the `masks` field**. It determines files the rule is run against.
-
-Each plugin rule could be run against certain files determined by _masks_. A **mask** is the part of the _full file path._ Say you have `"pureness/forbid-new": ["error", "formatter", "helper"]`, so both `~/app/src/formatters/time.es` and `~/app/src/utils/time-helper.es` are verified but `~/app/src/views/clock.es` is skipped for this particular rule.
+- **`<...options>`** is the sequence of objects describing rule-specific parameters. Every option **must contain the `masks` field** (`String` or `String[]`). It determines files the rule is run against. A **mask** is the part of the _full file path._ If you have, for instance,  
+   `"pureness/forbid-new": ["error", { "masks": ["formatter", "helper"], ... }]`  
+   both `src/formatters/time.es` and `src/utils/time-helper.es` are verified but `src/views/clock.es` is skipped for this particular rule.
 
 **Mind following:**
 - by default, without defining correct masks, plugin rules won't work;
@@ -104,6 +104,7 @@ The legacy (v2.1.x and below) syntax `"pureness/forbid-new": ["warn", <...masks>
 
 
 **Example (legacy syntax):** `"pureness/forbid-new": ["warn", "formatter", "helper"]`
+
 **Example (syntax of v2.2.x):**
 ```
 "pureness/forbid-new": ["warn",
@@ -131,6 +132,8 @@ The legacy (v2.1.x and below) syntax `"pureness/forbid-new": ["warn", <...masks>
 1. After development is done,
   1. create new git annotated tag, `git tag -a <version.number> -m "New release"`
   1. and push it: `git push origin <version.number>`
+
+The `EsLint.RuleTester` will be introduced with one of next releases.
 
 ---
 
